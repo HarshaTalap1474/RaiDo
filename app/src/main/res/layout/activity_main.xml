@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/txt_welcome_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to RaiDo"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"/>
+
+    <Button
+        android:id="@+id/btn_rider_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I am a Rider"
+        android:padding="15dp"/>
+
+    <Button
+        android:id="@+id/btn_driver_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I am a Driver"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"/>
+
+    <Button
+        android:id="@+id/btn_sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:backgroundTint="#FF0000"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>
