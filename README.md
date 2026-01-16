@@ -20,7 +20,7 @@ A real-time ride-sharing Android application prototype built for the BE EnTC Fin
 
 1.  **Clone the Repo:**
     ```bash
-    git clone [https://github.com/HarshaTalap1474/Raido.git](https://github.com/HarshaTalap1474/Raido.git)
+    git clone https://github.com/HarshaTalap1474/Raido.git
     ```
 2.  **Firebase Setup:**
     * Create a project on [Firebase Console](https://console.firebase.google.com/).
