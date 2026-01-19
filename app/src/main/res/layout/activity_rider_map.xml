@@ -24,14 +24,32 @@
             android:text="No Ride Requested"
             android:textSize="16sp"
             android:layout_marginBottom="10dp"/>
-
-        <Button
-            android:id="@+id/request_ride_btn"
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Request Ride"
-            android:backgroundTint="#000000"
-            android:textColor="#FFFFFF"/>
+            android:columnCount="2"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/request_ride_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Request Ride"
+                android:textSize="16sp"
+                android:layout_margin="5dp"/>
+
+            <Button
+                android:id="@+id/cancel_ride_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Cancel Ride"
+                android:textSize="16sp"
+                android:layout_margin="5dp"/>
+
+        </GridLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -49,7 +49,7 @@ import java.util.List;
 public class RiderMapActivity extends AppCompatActivity {
 
     private MapView map = null;
-    private Button mRequestBtn;
+    private Button mRequestBtn, mCancelBtn;
     private TextView mDriverInfo;
 
     // Accurate Location
@@ -66,6 +66,7 @@ public class RiderMapActivity extends AppCompatActivity {
     // Firebase
     private DatabaseReference databaseRef;
     private String userId;
+    private boolean rideRequested = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +80,7 @@ public class RiderMapActivity extends AppCompatActivity {
 
         mRequestBtn = findViewById(R.id.request_ride_btn);
         mDriverInfo = findViewById(R.id.driver_info_txt);
+        mCancelBtn = findViewById(R.id.cancel_ride_btn);
 
         map = findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
@@ -108,6 +110,7 @@ public class RiderMapActivity extends AppCompatActivity {
         checkLocationPermission();
 
         mRequestBtn.setOnClickListener(v -> requestRide());
+        mCancelBtn.setOnClickListener(v -> cancleRide());
     }
 
     private void checkLocationPermission() {
@@ -189,6 +192,7 @@ public class RiderMapActivity extends AppCompatActivity {
 
         databaseRef.child(userId).setValue(requestMap);
         listenForDriver();
+        rideRequested = true;
     }
 
     private void listenForDriver() {
@@ -336,6 +340,20 @@ public class RiderMapActivity extends AppCompatActivity {
         BoundingBox box = new BoundingBox(maxLat + 0.001, maxLng + 0.001, minLat - 0.001, minLng - 0.001);
         map.zoomToBoundingBox(box, true);
     }
+
+    protected void cancleRide(){
+        if(rideRequested) {
+            databaseRef.child(userId).removeValue();
+            rideRequested = false;
+            mRequestBtn.setText("Request Ride");
+            mRequestBtn.setEnabled(true);
+            mDriverInfo.setText("No ride requested");
+            Toast.makeText(this, "Ride cancelled", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "No ride requested", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     @Override
     protected void onResume() {
